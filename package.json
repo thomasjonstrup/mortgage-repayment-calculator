@@ -16,6 +16,7 @@
   "dependencies": {
     "@fontsource-variable/plus-jakarta-sans": "5.0.21",
     "pinia": "^2.1.7",
+    "prettier-plugin-tailwindcss": "0.6.5",
     "vue": "^3.4.29"
   },
   "devDependencies": {

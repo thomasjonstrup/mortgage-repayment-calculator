@@ -1,83 +1,169 @@
 <script setup lang="ts">
-import '@fontsource-variable/plus-jakarta-sans'
-import IconCalulator from './assets/images/icon-calculator.svg'
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import '@fontsource-variable/plus-jakarta-sans';
+import IconCalulator from './assets/images/icon-calculator.svg';
+import IllustrationEmpty from './components/icons/IllustrationEmpty.vue';
 </script>
 
 <template>
-  <main class="bg-slate-100">
-    <div class="md:container mx-auto md:grid md:grid-cols-2">
-      <div class="pt-6 pb-6 px-4 bg-white">
-        <h1 class="text-2xl font-bold">Mortgage Calculator</h1>
-        <button>Clear All</button>
-        <div class="input">
-          <label for="mortgate-amount">Mortgage Amount</label>
-          <div>
-            <div>£</div>
-            <input type="text" id="mortgate-amount" />
-          </div>
-        </div>
-        <div class="input">
-          <label for="mortgate-term">Mortgage Term</label>
-          <div>
-            <input type="text" id="mortgate-term" />
-            <div>years</div>
-          </div>
-        </div>
-        <div class="input">
-          <label for="mortgate-term">Interest Rate</label>
-          <div>
-            <input type="text" id="interest-rate" />
-            <div>%</div>
-          </div>
-        </div>
-        <div class="input">
-          <div>Mortgage Type</div>
-          <div>
-            <input type="radio" id="repayment" name="contact" value="email" />
-            <label for="repayment">Repayment</label>
-          </div>
-          <div>
-            <input type="radio" id="interest" name="contact" value="email" />
-            <label for="interest">Interest Only</label>
-          </div>
-        </div>
-        <button
-          class="bg-lime w-full text-slate-800 py-2 px-4 font-bold gap-2 mt-4 rounded-full text-sm flex justify-center items-center"
-        >
-          <img :src="IconCalulator" />
-          Calculate Repayments
-        </button>
-      </div>
+	<main
+		class="grid min-h-screen place-items-center bg-slate-100 md:py-10 lg:p-0"
+	>
+		<div
+			class="mx-auto grid-cols-2 overflow-hidden bg-white md:max-w-2xl md:rounded-3xl lg:grid lg:max-w-5xl"
+		>
+			<div class="px-8 pb-8 pt-6">
+				<div class="md:flex md:justify-between">
+					<h1 class="text-xl font-bold md:text-2xl">
+						Mortgage Calculator
+					</h1>
+					<button class="mb-3 mt-2 text-xs text-slate-600 underline">
+						Clear All
+					</button>
+				</div>
+				<div class="grid grid-cols-2 gap-6">
+					<div class="input col-span-full mb-2">
+						<label
+							for="mortgate-amount"
+							class="text-xs font-semibold text-slate-600"
+							>Mortgage Amount</label
+						>
+						<div
+							class="mt-1 flex overflow-hidden rounded border border-slate-500 focus-within:border-lime"
+						>
+							<label
+								class="bg-slate-100 p-3 font-semibold text-slate-700 focus-within:bg-lime"
+								for="mortgate-amount"
+								>£
+							</label>
+							<input
+								type="text"
+								id="mortgate-amount"
+								class="w-full px-6 py-3.5"
+							/>
+						</div>
+					</div>
+					<div class="input col-span-full mb-2 md:col-span-1">
+						<label
+							for="mortgate-term"
+							class="text-xs font-semibold text-slate-600"
+							>Mortgage Term</label
+						>
+						<div
+							class="mt-1 flex overflow-hidden rounded border border-slate-500 focus-within:border-lime"
+						>
+							<input
+								type="text"
+								id="mortgate-term"
+								class="w-full px-6 py-3.5"
+							/>
+							<label
+								class="bg-slate-100 p-3 font-semibold text-slate-700 focus-within:bg-lime"
+								for="mortgate-term"
+							>
+								years
+							</label>
+						</div>
+					</div>
+					<div class="input col-span-full mb-4 md:col-span-1">
+						<label
+							for="interest-rate"
+							class="text-xs font-semibold text-slate-600"
+							>Interest Rate</label
+						>
+						<div
+							class="mt-1 flex overflow-hidden rounded border border-slate-500 focus-within:border-lime"
+						>
+							<label
+								class="bg-slate-100 p-3 font-semibold text-slate-700 focus-within:bg-lime"
+								for="interest-rate"
+							>
+								%
+							</label>
+							<input
+								type="text"
+								id="interest-rate"
+								class="w-full px-6 py-3.5"
+							/>
+						</div>
+					</div>
+					<div class="input col-span-full">
+						<div class="text-xs font-semibold text-slate-600">
+							Mortgage Type
+						</div>
 
-      <div class="bg-slate-800 p-8 text-center">
-        <h2 class="text-slate-50 text-xl font-semibold pb-4">Results shown here</h2>
-        <p class="text-slate-300 text-sm">
-          Complete the form and click “calculate repayments” to see what your monthly repayments
-          would be.
-        </p>
-      </div>
+						<div class="flex flex-col gap-4">
+							<div
+								class="mt-2 flex items-center gap-2 rounded-lg border border-slate-500 px-6 py-3.5"
+							>
+								<input
+									type="radio"
+									id="repayment"
+									name="contact"
+									value="email"
+									class="size-5 h-[21px] appearance-none rounded-full border border-slate-500 checked:border-none checked:bg-radio-selected focus:outline-none group-hover/radio:cursor-pointer"
+								/>
+								<label
+									for="repayment"
+									class="text-sm font-semibold"
+									>Repayment</label
+								>
+							</div>
+							<div
+								class="flex items-center gap-2 rounded-lg border border-slate-500 px-6 py-3.5"
+							>
+								<input
+									type="radio"
+									id="interest"
+									name="contact"
+									value="email"
+									class="size-5 h-[21px] appearance-none rounded-full border border-slate-500 checked:border-none checked:bg-radio-selected focus:outline-none group-hover/radio:cursor-pointer"
+								/>
+								<label
+									for="interest"
+									class="text-sm font-semibold"
+									>Interest Only</label
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+				<button
+					class="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-lime px-4 py-2 text-sm font-bold text-slate-800 md:w-auto"
+				>
+					<img :src="IconCalulator" />
+					Calculate Repayments
+				</button>
+			</div>
 
-      <!-- Empty results start -->
+			<div
+				class="flex flex-col items-center bg-slate-800 p-8 text-center md:rounded-bl-[6rem]"
+			>
+				<IllustrationEmpty />
+				<h2 class="pb-4 text-xl font-semibold text-slate-50">
+					Results shown here
+				</h2>
+				<p class="text-sm text-slate-300">
+					Complete the form and click “calculate repayments” to see
+					what your monthly repayments would be.
+				</p>
+			</div>
 
-      <!-- Empty results end -->
+			<!-- Empty results start -->
 
-      <!-- Completed results start -->
+			<!-- Empty results end -->
 
-      <!---Your results Your results are shown below based on the information you provided. To adjust the
+			<!-- Completed results start -->
+
+			<!---Your results Your results are shown below based on the information you provided. To adjust the
       results, edit the form and click “calculate repayments” again. Your monthly repayments Total
       you'll repay over the term--->
 
-      <!-- Completed results end -->
-    </div>
-  </main>
-  <footer>
-    <div class="container mx-auto">
-      <div class="attribution">
-        Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
-        Coded by <a href="#">Your Name Here</a>.
-      </div>
-    </div>
-  </footer>
+			<!-- Completed results end -->
+		</div>
+		<!-- 		<div class="absolute bottom-2">
+			Challenge by
+			<a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. Coded by
+			<a href="#">Your Name Here</a>.
+		</div> -->
+	</main>
 </template>
