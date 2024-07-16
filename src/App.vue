@@ -6,9 +6,9 @@ import TheWelcome from './components/TheWelcome.vue'
 </script>
 
 <template>
-  <main>
-    <div class="container mx-auto">
-      <div class="pt-6 pb-6">
+  <main class="bg-slate-100">
+    <div class="md:container mx-auto md:grid md:grid-cols-2">
+      <div class="pt-6 pb-6 px-4 bg-white">
         <h1 class="text-2xl font-bold">Mortgage Calculator</h1>
         <button>Clear All</button>
         <div class="input">
