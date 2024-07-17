@@ -88,7 +88,7 @@ export const useFormStore = defineStore('form', () => {
 
 			if (form.type) {
 				const {monthlyPayment, totalPayment} = calculateMortgage(
-					Number(form.amount),
+					Number(form.amount.replace(',', '')),
 					Number(form.term),
 					Number(form.rate),
 					form.type

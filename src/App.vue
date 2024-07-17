@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import '@fontsource-variable/plus-jakarta-sans';
 import {twMerge} from 'tailwind-merge';
+import {vMaska} from 'maska/vue';
 
 import IconCalulator from './assets/images/icon-calculator.svg';
 import IllustrationEmpty from './components/icons/IllustrationEmpty.vue';
 import {useFormStore} from './stores/form';
 
-const {form, setFormValue, submitForm, formErrors, clearForm, result} =
-	useFormStore();
+const {form, submitForm, formErrors, clearForm, result} = useFormStore();
 
 console.log('form', form.amount);
 </script>
@@ -17,10 +17,10 @@ console.log('form', form.amount);
 		class="grid min-h-screen place-items-center bg-slate-100 md:py-10 lg:p-0"
 	>
 		<div
-			class="mx-auto grid-cols-2 overflow-hidden bg-white md:max-w-2xl md:rounded-3xl lg:grid lg:max-w-5xl"
+			class="mx-auto grid-cols-2 overflow-hidden bg-white md:max-w-2xl md:rounded-3xl lg:grid lg:max-w-4xl"
 		>
 			<div class="px-8 pb-8 pt-6">
-				<div class="md:flex md:justify-between">
+				<div class="mb-4 md:flex md:justify-between">
 					<h1 class="text-xl font-bold md:text-2xl">
 						Mortgage Calculator
 					</h1>
@@ -66,6 +66,7 @@ console.log('form', form.amount);
 								type="text"
 								id="mortgate-amount"
 								class="w-full px-6 py-3.5"
+								v-maska="'###,###'"
 								v-model="form.amount"
 							/>
 						</div>
@@ -103,6 +104,7 @@ console.log('form', form.amount);
 								id="mortgate-term"
 								class="w-full px-6 py-3.5"
 								v-model="form.term"
+								v-maska="'###'"
 							/>
 							<label
 								class="bg-slate-100 p-3 font-semibold text-slate-700 focus-within:bg-lime"
@@ -148,6 +150,7 @@ console.log('form', form.amount);
 							<input
 								type="text"
 								id="interest-rate"
+								v-maska="'#.##'"
 								class="w-full px-6 py-3.5"
 								v-model="form.rate"
 							/>
@@ -178,7 +181,7 @@ console.log('form', form.amount);
 
 						<div class="flex flex-col gap-4">
 							<div
-								class="mt-2 flex items-center gap-2 rounded-lg border border-slate-500 px-6 py-3.5"
+								class="focus-within:bg-lime-opacity-20 has-[:checked]:bg-lime-opacity-20 mt-2 flex items-center gap-2 rounded-lg border border-slate-500 px-6 py-3.5 focus-within:border-lime hover:border-lime"
 							>
 								<input
 									type="radio"
@@ -195,7 +198,7 @@ console.log('form', form.amount);
 								>
 							</div>
 							<div
-								class="flex items-center gap-2 rounded-lg border border-slate-500 px-6 py-3.5"
+								class="focus-within:bg-lime-opacity-20 peer-checked:bg-red-600 has-[:checked]:bg-lime-opacity-20 flex items-center gap-2 rounded-lg border border-slate-500 px-6 py-3.5 focus-within:border-lime hover:border-lime"
 							>
 								<input
 									type="radio"
@@ -235,7 +238,7 @@ console.log('form', form.amount);
 				<button
 					type="submit"
 					@click="submitForm"
-					class="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-lime px-4 py-2 text-sm font-bold text-slate-800 md:w-auto"
+					class="hover:bg-lime-opacity-80 mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-lime px-8 py-3 text-sm font-bold text-slate-800 md:w-auto"
 				>
 					<img :src="IconCalulator" />
 					Calculate Repayments
@@ -249,24 +252,24 @@ console.log('form', form.amount);
 				<h2 class="pb-4 text-xl font-semibold text-slate-50">
 					Your results
 				</h2>
-				<p class="text-sm text-slate-300">
+				<p class="pb-4 text-sm text-slate-400">
 					Your results are shown below based on the information you
 					provided. To adjust the results, edit the form and click
 					“calculate repayments” again.
 				</p>
 				<div
-					class="bg-black-40 mt-4 rounded-lg border-t-4 border-lime p-4"
+					class="bg-black-40 mt-4 rounded-lg border-t-4 border-lime p-6 py-8"
 				>
-					<div class="border-b-[1px] border-slate-400 pb-2">
-						<p class="pb-1 text-sm text-slate-300">
+					<div class="border-b-[1px] border-slate-600 pb-6">
+						<p class="pb-2 text-sm text-slate-400">
 							Your monthly repayments
 						</p>
-						<h3 class="text-2xl font-semibold text-lime">
+						<h3 class="text-4xl font-semibold text-lime">
 							{{ result.monthlyPayment }}
 						</h3>
 					</div>
-					<div class="pt-2">
-						<p class="pb-1 text-sm text-slate-300">
+					<div class="pt-6">
+						<p class="pb-2 text-sm text-slate-400">
 							Total you'll repay over the term
 						</p>
 						<h4 class="text-m font-semibold text-white">
@@ -285,20 +288,12 @@ console.log('form', form.amount);
 				</h2>
 
 				<div class="text-center">
-					<p class="text-sm text-slate-300">
+					<p class="text-sm text-slate-400">
 						Complete the form and click “calculate repayments” to
 						see what your monthly repayments would be.
 					</p>
 				</div>
 			</div>
-
-			<!-- Empty results start -->
-
-			<!-- Empty results end -->
-
-			<!-- Completed results start -->
-
-			<!-- Completed results end -->
 		</div>
 	</main>
 	<footer

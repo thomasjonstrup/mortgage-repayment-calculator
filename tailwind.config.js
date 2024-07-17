@@ -17,6 +17,8 @@ export default {
 			},
 			colors: {
 				lime: 'hsl(61, 70%, 52%)',
+				'lime-opacity-20': 'hsla(61, 70%, 52%, 20%)',
+				'lime-opacity-80': 'hsla(61, 70%, 52%, 80%)',
 				red: 'hsl(4, 69%, 50%)',
 				white: 'hsl(0, 0%, 100%)',
 				'slate-100': 'hsl(202, 86%, 94%)',
