@@ -5,6 +5,7 @@
 		height="192"
 		fill="none"
 		viewBox="0 0 192 192"
+		class="inline"
 	>
 		<path
 			fill="#fff"

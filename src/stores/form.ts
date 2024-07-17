@@ -1,6 +1,7 @@
 import {reactive} from 'vue';
 import {defineStore} from 'pinia';
 import {z} from 'zod';
+import {calculateMortgage} from '@/utils/calculate';
 
 const formSchema = z.object({
 	amount: z
@@ -31,7 +32,17 @@ type FormState = {
 	type: 'repayment' | 'interest' | null;
 };
 
+type Result = {
+	monthlyPayment: string;
+	totalPayment: string;
+};
+
 export const useFormStore = defineStore('form', () => {
+	const result = reactive<Result>({
+		monthlyPayment: '',
+		totalPayment: '',
+	});
+
 	const form = reactive<FormState>({
 		amount: '',
 		rate: '',
@@ -57,15 +68,15 @@ export const useFormStore = defineStore('form', () => {
 		// Clear form errors
 		formErrors.fieldErrors = {};
 		formErrors.formErrors = [];
+
+		result.monthlyPayment = '';
+		result.totalPayment = '';
 	};
 
 	const submitForm = (event: MouseEvent) => {
 		event.preventDefault();
-		console.log('form.amount', JSON.stringify(form));
 
 		const parsedData = formSchema.safeParse(form);
-
-		console.log('parsedData', parsedData);
 
 		if (!parsedData.success) {
 			const errors = parsedData.error.flatten();
@@ -74,8 +85,20 @@ export const useFormStore = defineStore('form', () => {
 		} else {
 			formErrors.fieldErrors = {};
 			formErrors.formErrors = [];
+
+			if (form.type) {
+				const {monthlyPayment, totalPayment} = calculateMortgage(
+					Number(form.amount),
+					Number(form.term),
+					Number(form.rate),
+					form.type
+				);
+
+				result.monthlyPayment = monthlyPayment;
+				result.totalPayment = totalPayment;
+			}
 		}
 	};
 
-	return {form, setFormValue, submitForm, formErrors, clearForm};
+	return {form, setFormValue, submitForm, formErrors, clearForm, result};
 });

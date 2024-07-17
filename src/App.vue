@@ -6,7 +6,8 @@ import IconCalulator from './assets/images/icon-calculator.svg';
 import IllustrationEmpty from './components/icons/IllustrationEmpty.vue';
 import {useFormStore} from './stores/form';
 
-const {form, setFormValue, submitForm, formErrors, clearForm} = useFormStore();
+const {form, setFormValue, submitForm, formErrors, clearForm, result} =
+	useFormStore();
 
 console.log('form', form.amount);
 </script>
@@ -242,7 +243,41 @@ console.log('form', form.amount);
 			</div>
 
 			<div
-				class="flex flex-col items-center justify-center bg-slate-800 p-8 md:rounded-bl-[6rem]"
+				v-if="result.monthlyPayment && result.totalPayment"
+				class="flex flex-col bg-slate-800 p-8 md:rounded-3xl lg:rounded-bl-[6rem]"
+			>
+				<h2 class="pb-4 text-xl font-semibold text-slate-50">
+					Your results
+				</h2>
+				<p class="text-sm text-slate-300">
+					Your results are shown below based on the information you
+					provided. To adjust the results, edit the form and click
+					“calculate repayments” again.
+				</p>
+				<div
+					class="bg-black-40 mt-4 rounded-lg border-t-4 border-lime p-4"
+				>
+					<div class="border-b-[1px] border-slate-400 pb-2">
+						<p class="pb-1 text-sm text-slate-300">
+							Your monthly repayments
+						</p>
+						<h3 class="text-2xl font-semibold text-lime">
+							{{ result.monthlyPayment }}
+						</h3>
+					</div>
+					<div class="pt-2">
+						<p class="pb-1 text-sm text-slate-300">
+							Total you'll repay over the term
+						</p>
+						<h4 class="text-m font-semibold text-white">
+							{{ result.totalPayment }}
+						</h4>
+					</div>
+				</div>
+			</div>
+			<div
+				v-else
+				class="flex flex-col items-center justify-center bg-slate-800 p-8 text-center md:rounded-bl-[6rem]"
 			>
 				<IllustrationEmpty />
 				<h2 class="pb-4 text-xl font-semibold text-slate-50">
@@ -254,30 +289,6 @@ console.log('form', form.amount);
 						Complete the form and click “calculate repayments” to
 						see what your monthly repayments would be.
 					</p>
-
-					<h2 class="pb-4 text-xl font-semibold text-slate-50">
-						Your results
-					</h2>
-					<p class="text-sm text-slate-300">
-						Your results are shown below based on the information
-						you provided. To adjust the results, edit the form and
-						click “calculate repayments” again.
-					</p>
-				</div>
-
-				<div class="div">
-					<div class="test">
-						<h3 class="text-xl text-lime">£1,797.74</h3>
-						<p class="text-sm text-slate-300">
-							Your monthly repayments
-						</p>
-					</div>
-					<div class="test">
-						<p class="text-sm text-slate-300">
-							Total you'll repay over the term
-						</p>
-						<h4 class="text-m text-white">£539,322.94</h4>
-					</div>
 				</div>
 			</div>
 

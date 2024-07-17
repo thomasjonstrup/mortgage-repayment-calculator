@@ -24,11 +24,12 @@ export default {
 				'slate-500': 'hsl(200, 26%, 54%)',
 				'slate-700': 'hsl(200, 24%, 40%)',
 				'slate-900': 'hsl(202, 55%, 16%)',
+				'black-40': 'rgba(0,0,0, 0.4)',
 			},
 			keyframes: {
 				'fade-in': {
-					'0%': { opacity: '0%' },
-					'100%': { opacity: '100%' },
+					'0%': {opacity: '0%'},
+					'100%': {opacity: '100%'},
 				},
 			},
 			animation: {
