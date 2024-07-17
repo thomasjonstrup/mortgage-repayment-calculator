@@ -52,7 +52,7 @@ console.log('form', form.amount);
 							<label
 								:class="
 									twMerge(
-										'bg-slate-100 p-3 font-semibold text-slate-700 focus-within:bg-lime',
+										'bg-slate-100 p-3 px-4 font-semibold text-slate-700 focus-within:bg-lime',
 										formErrors.fieldErrors &&
 											formErrors.fieldErrors['amount']
 											? 'bg-red text-white'
@@ -107,7 +107,7 @@ console.log('form', form.amount);
 								v-maska="'###'"
 							/>
 							<label
-								class="bg-slate-100 p-3 font-semibold text-slate-700 focus-within:bg-lime"
+								class="bg-slate-100 p-3 px-4 font-semibold text-slate-700 focus-within:bg-lime"
 								for="mortgate-term"
 							>
 								years
@@ -142,7 +142,7 @@ console.log('form', form.amount);
 							class="mt-1 flex overflow-hidden rounded border border-slate-500 focus-within:border-lime"
 						>
 							<label
-								class="bg-slate-100 p-3 font-semibold text-slate-700 focus-within:bg-lime"
+								class="bg-slate-100 p-3 px-4 font-semibold text-slate-700 focus-within:bg-lime"
 								for="interest-rate"
 							>
 								%
